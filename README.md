@@ -45,7 +45,7 @@ Note: Alter the properties accordingly to your environment (each property can be
 - Environment should contain at least the Entitlements and ProductSummary capabilities.
 
 2. Run bb-fuel as follows:
-- For environments based on AWS (default) or Kubernetes:
+- For environments based on AWS (default):
 ```
 java -Denvironment.name=your-env-00 -jar bb-fuel-{version}-boot.jar
 ```
@@ -62,6 +62,12 @@ java -Dspring.profiles.active=local -jar bb-fuel-{version}-boot.jar
 java -Dspring.profiles.active=pcf -Dpcf.space=NAME_OF_YOUR_SPACE -jar bb-fuel-{version}-boot.jar
 
 ```
+
+- For environments based on Kubernetes:
+```
+java -Dspring.profiles.active=k8s -Denvironment.name=BUILD_NUMBER -jar bb-fuel-{version}-boot.jar
+```
+
 Note: replace `NAME_OF_YOUR_SPACE` with the name of your space in PCF. It requires your routes to include the space name like: http://${service}-${space}.${domain}
 Alternatively you can add `pcf.space` property to `application-pcf.yml` before building bb-fuel.
 
